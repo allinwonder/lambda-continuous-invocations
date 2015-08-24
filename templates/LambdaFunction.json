@@ -3,7 +3,7 @@
   "Description": "Lambda Function to be invoke periodically",
   "Parameters": {
     "alarmName": {
-      "Default": "LambdaCron",
+      "Default": "LazyLambda",
       "Type": "String"
     },
     "deploymentBucket": {
@@ -138,7 +138,7 @@
         "Function"
       ],
       "Properties": {
-        "DisplayName": "LambdaCronCloudWatchAlarmSNS",
+        "DisplayName": "LazyLambdaCloudWatchAlarmSNS",
         "Subscription": [
           {
             "Endpoint": {
