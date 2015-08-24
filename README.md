@@ -48,9 +48,9 @@ Login to the AWS Console Lambda Service, and select the function created by the 
 
 ### Caveat
 
-The interval of the invocations from CloudWatch is vary. In the experiment, I used **60 second** period, and **1** as evaluation period. The invocation internal is around 5 minutes (I think it is rely on the evaluation minimum evaluation period for Lambda function, 5 minutes I think it is the current limitation.)
+The interval of the invocations from CloudWatch is vary. In the experiment, I used **60 second** period, and **1** as evaluation period. The invocation interval is around 5 to 6 minutes (I think it is rely on the evaluation minimum evaluation period for Lambda function, 5 minutes I think it is the current limitation.)
 
-So I think this is something that good for loose coupling stuff, for production, you want something more reliable. ;)
+So I think this is something that good for loose coupling non-production stuff, for production, you want something more reliable. ;)
 
 
 ### The Unlicense
