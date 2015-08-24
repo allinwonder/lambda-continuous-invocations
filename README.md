@@ -3,9 +3,9 @@ Continous AWS Lambda Invocation from CloudWatch
 
 This is an example stack to show you how to create a AWS Lambda function with repeatable invocations.
 
-There are a couple of movations that make me to try out this concept.
+There are a couple of motivations that make me to try out this concept.
 
-- I have events that not originate from AWS infrustructure
+- I have events that not originate from AWS infrastructure
 - I don't have control and no idea when the external event will happen, so I need to do some active check.
 - I have a very small job that just can fit in the 60 seconds window
 - I want to spend less as possible to run/maintain the job
@@ -22,7 +22,7 @@ I have included a **hello world** Lambda function and the CloudFormation templat
 
 **Note**
 
-there is a little bit of manual work is required to setup Lambda function's event source to use the SNS topic. I can't find this is configurable in CloudFormation, maybe the feature support in CloudFormation is still legging.
+There is a little bit of manual work is required to setup Lambda function's event source to use the SNS topic. I can't find this is configurable in CloudFormation, maybe the feature support in CloudFormation is still legging.
 
 **Step 1 - Update Lambda Function Package**
 
@@ -48,7 +48,7 @@ Login to the AWS Console Lambda Service, and select the function created by the 
 
 ### Caveat
 
-The interval of the invocations from CloudWatch is vary. In the experiment, I used **60 second** period, and **1** as evalution period. The invocation internal is around 5 miniutes (I think it is rely on the evalution minimum evaluation period for Lambda function, 5 minutes I think it is the current limitation.)
+The interval of the invocations from CloudWatch is vary. In the experiment, I used **60 second** period, and **1** as evaluation period. The invocation internal is around 5 minutes (I think it is rely on the evaluation minimum evaluation period for Lambda function, 5 minutes I think it is the current limitation.)
 
 So I think this is something that good for loose coupling stuff, for production, you want something more reliable. ;)
 
