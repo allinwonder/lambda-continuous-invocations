@@ -28,11 +28,7 @@ There is a little bit of manual work is required to setup Lambda function's even
 **Step 1 - Create Lambda Function Stack**
 
 ```sh
-aws cloudformation create-stack LazyLambda                                             \
-  --template-body file://LambdaFunction.json                                           \
-  --parameters ParameterKey="deploymentBucket",ParameterValue="YOUR-S3-BUCKET"         \
-               ParameterKey="packageName",ParameterValue="hello-world/hello-world.zip" \
-               ParameterKey="handler",ParameterValue="hello-world.handler"
+aws cloudformation create-stack LazyLambda --template-body file://LambdaFunction.json
 ```
 
 **Step 2 - Manually add event source**
