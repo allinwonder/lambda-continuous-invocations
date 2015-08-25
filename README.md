@@ -22,16 +22,10 @@ I have included a **hello world** Lambda function and the CloudFormation templat
 
 **Note**
 
-There is a little bit of manual work is required to setup Lambda function's event source to use the SNS topic. I can't find this is configurable in CloudFormation, maybe the feature support in CloudFormation is still legging.
-
-**Step 1 - Update Lambda Function Package**
-
-```sh
-aws s3 cp hello-world.zip s3://YOUR-S3-BUCKET/hello-world/hello-world.zip 
-```
+There is a little bit of manual work is required to setup Lambda function's event source to use the SNS topic. I can't find this is configurable in CloudFormation so far.
 
 
-**Step 2 - Create Lambda Function Stack**
+**Step 1 - Create Lambda Function Stack**
 
 ```sh
 aws cloudformation create-stack LazyLambda                                             \
@@ -41,10 +35,13 @@ aws cloudformation create-stack LazyLambda                                      
                ParameterKey="handler",ParameterValue="hello-world.handler"
 ```
 
-**Step 3 - Manually add event source**
+**Step 2 - Manually add event source**
 
 Login to the AWS Console Lambda Service, and select the function created by the above stack, edit the **event source** option to add in the SNS Topic created in the same stack.
 
+**Step 3 - Trigger the first invocation manaully**
+
+You need to login to Lambda Console and trigger a test SNS message to the function, to kickoff the CloudWatch Alarm.
 
 ### Caveat
 
