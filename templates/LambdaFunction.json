@@ -5,15 +5,6 @@
     "alarmName": {
       "Default": "LazyLambda",
       "Type": "String"
-    },
-    "deploymentBucket": {
-      "Type": "String"
-    },
-    "handler": {
-      "Type": "String"
-    },
-    "packageName": {
-      "Type": "String"
     }
   },
   "Resources": {
@@ -23,17 +14,20 @@
       ],
       "Properties": {
         "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucket"
-          },
-          "S3Key": {
-            "Ref": "packageName"
+          "ZipFile": {
+            "Fn::Join": [
+              "\n",
+              [
+                "exports.handler = function(event, context) {",
+                "  console.log('Receive Event:', JSON.stringify(event, null, 2));",
+                "  context.succeed('alwary true');",
+                "};"
+              ]
+            ]
           }
         },
         "Description": "Lambda Function to be invoke periodically",
-        "Handler": {
-          "Ref": "handler"
-        },
+        "Handler": "index.handler",
         "MemorySize": "128",
         "Role": {
           "Fn::GetAtt": [
@@ -127,7 +121,7 @@
               ],
               "Version": "2012-10-17"
             },
-            "PolicyName": "AllowNothing"
+            "PolicyName": "AllowLogs"
           }
         ]
       },
