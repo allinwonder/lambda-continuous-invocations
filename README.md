@@ -49,6 +49,15 @@ The interval of the invocations from CloudWatch is vary. In the experiment, I us
 
 So I think this is something that good for loose coupling non-production stuff, for production, you want something more reliable. ;)
 
+### Cost
+
+the estimated monthly cost for this hello-world function is 50 cent/month
+
+Calculation: 
+
+- Lambda: 5 seconds run time x ( 30 days x 24 hours x 60 minutes / 5 minutes ) - 3,200,000 free tier seconds
+- CloudWatch: $0.10/alarm/month + $0.76/GB ingested
+- SNS: Free
 
 ### The Unlicense
 
